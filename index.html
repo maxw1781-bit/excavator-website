@@ -83,6 +83,11 @@
   .card:hover .ph img{transform:scale(1.05)}
   .card .ph .cat{position:absolute;top:12px;left:12px;background:rgba(14,42,71,.85);color:#fff;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:999px;letter-spacing:.5px}
   .card .ph .fb{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--navy);font-weight:800;font-size:15px;text-align:center;padding:0 14px}
+  .card .ph-link{position:absolute;inset:0;display:block;cursor:pointer}
+  .card .ph-link[aria-disabled="true"]{cursor:default}
+  .card .ph-link:focus-visible{outline:3px solid var(--orange);outline-offset:-3px}
+  .card .pdf-hint{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(14,42,71,.88);color:#fff;font-size:12.5px;font-weight:700;padding:7px 14px;border-radius:999px;letter-spacing:.3px;opacity:0;transition:opacity .2s;pointer-events:none;display:flex;align-items:center;gap:6px}
+  .card .ph-link:hover .pdf-hint,.card .ph-link:focus .pdf-hint{opacity:1}
   .card .body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
   .card h3{font-size:17px;color:var(--navy);line-height:1.35}
   .card ul{list-style:none;display:flex;flex-direction:column;gap:5px;margin-top:2px}
@@ -371,7 +376,8 @@ window.PRODUCTS = [
     cat: "EX",
     specs: ["1.2T operating weight", "Compact zero-tail swing", "Retractable tracks for narrow access"],
     img: "./assets/images/EX12.png",
-    alt: "EX12 mini excavator side view"
+    alt: "EX12 mini excavator side view",
+    pdf: "./assets/detialpdf/EX12.pdf"
   },
   {
     id: "ex12-va",
@@ -379,7 +385,8 @@ window.PRODUCTS = [
     cat: "EX",
     specs: ["1.2T operating weight", "Variable-angle boom", "Extended reach for deep digging"],
     img: "./assets/images/EX12-Va.png",
-    alt: "EX12-Va mini excavator with variable angle boom"
+    alt: "EX12-Va mini excavator with variable angle boom",
+    pdf: "./assets/detialpdf/EX12-Va.pdf"
   },
   {
     id: "ex18-pro",
@@ -387,7 +394,8 @@ window.PRODUCTS = [
     cat: "EX",
     specs: ["1.8T operating weight", "Pro model with reinforced arm", "Yanmar engine option available"],
     img: "./assets/images/EX18,EX18Pro.png",
-    alt: "EX18 and EX18Pro mini excavators comparison"
+    alt: "EX18 and EX18Pro mini excavators comparison",
+    pdf: "./assets/detialpdf/EX18,EX18Pro.pdf"
   },
   {
     id: "mx20u",
@@ -395,7 +403,8 @@ window.PRODUCTS = [
     cat: "MX",
     specs: ["2.0T operating weight", "Ultra-compact footprint", "Ideal for indoor demolition"],
     img: "./assets/images/MX20U.png",
-    alt: "MX20U ultra-compact excavator working indoor"
+    alt: "MX20U ultra-compact excavator working indoor",
+    pdf: "./assets/detialpdf/MX20U.pdf"
   },
   {
     id: "mx28u",
@@ -403,7 +412,8 @@ window.PRODUCTS = [
     cat: "MX",
     specs: ["2.8T operating weight", "Zero tail swing design", "Kubota engine, Euro 5 compliant"],
     img: "./assets/images/MX28U.png",
-    alt: "MX28U compact excavator on construction site"
+    alt: "MX28U compact excavator on construction site",
+    pdf: "./assets/detialpdf/MX28U_20260701190044.pdf"
   },
   {
     id: "mx38u",
@@ -411,7 +421,8 @@ window.PRODUCTS = [
     cat: "MX",
     specs: ["3.8T operating weight", "Midi-class digging power", "Cabin with A/C for all climates"],
     img: "./assets/images/MX38U.png",
-    alt: "MX38U midi excavator with cabin"
+    alt: "MX38U midi excavator with cabin",
+    pdf: "./assets/detialpdf/MX38U_20260701190046.pdf"
   }
 ];
 
@@ -474,10 +485,18 @@ window.CATS = [
     var el = document.createElement("article");
     el.className = "card";
     var label = (p.name || "").replace(/[<>&"]/g, "");
+    var pdf = p.pdf || "";
+    var linkAttrs = pdf
+      ? ' href="' + pdf + '" target="_blank" rel="noopener" title="View detail PDF"'
+      : ' href="javascript:void(0)" aria-disabled="true"';
+    var hint = pdf ? '<span class="pdf-hint" aria-hidden="true">📄 View PDF</span>' : "";
     el.innerHTML =
       '<div class="ph">' +
         '<div class="fb">' + label + "</div>" +
-        '<img loading="lazy" alt="' + (p.alt || label) + '" data-image="' + p.img + '" onerror="this.style.display=\'none\'">' +
+        '<a class="ph-link"' + linkAttrs + ">" +
+          '<img loading="lazy" alt="' + (p.alt || label) + '" data-image="' + p.img + '" onerror="this.style.display=\'none\'">' +
+          hint +
+        "</a>" +
         '<span class="cat">' + (catLabel[p.cat] || "Vehicle") + "</span>" +
       "</div>" +
       '<div class="body"><h3>' + label + "</h3><ul>" +
