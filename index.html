@@ -283,8 +283,8 @@
         <div class="c-row"><span class="ico">📍</span><div><b>Office</b>Truck Industrial Park, Jinan, Shandong, China</div></div>
         <div class="c-row"><span class="ico">🕘</span><div><b>Working Hours</b>Mon–Sat, 9:00–18:00 (GMT+8)</div></div>
       </div>
-      <form id="inqForm" novalidate>
-        <div id="formOk">✔ Thank you! Your inquiry has been recorded. Our team will contact you shortly. (Demo — not actually sent)</div>
+      <form id="inqForm" novalidate action="https://formspree.io/f/mbgrpepe" method="POST">
+        <div id="formOk">✔ Thank you! Your inquiry has been sent. Our team will contact you shortly.</div>
         <div class="frow">
           <div class="field" id="fName">
             <label for="name">Your Name *</label>
@@ -487,9 +487,36 @@ window.CATS = [
     bad = setErr("fEmail", !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) || bad;
     bad = setErr("fCountry", !document.getElementById("country").value.trim()) || bad;
     if (bad) { okBox.style.display = "none"; return; }
-    okBox.style.display = "block";
-    form.reset();
-    okBox.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    var btn = form.querySelector('[type="submit"]');
+    var originalText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = "Sending…";
+
+    fetch(form.action, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        name: document.getElementById("name").value.trim(),
+        email: email,
+        country: document.getElementById("country").value.trim(),
+        product: document.getElementById("product").value,
+        message: document.getElementById("message").value,
+        _subject: "New website inquiry from " + document.getElementById("name").value.trim()
+      })
+    }).then(function (r) {
+      if (!r.ok) throw new Error("Request failed");
+      okBox.style.display = "block";
+      okBox.textContent = "✔ Thank you! Your inquiry has been sent. Our team will contact you shortly.";
+      form.reset();
+      okBox.scrollIntoView({ behavior: "smooth", block: "center" });
+    }).catch(function () {
+      okBox.style.display = "block";
+      okBox.textContent = "✘ Submission failed. Please try again or email sales@Excavator-example.com directly.";
+    }).finally(function () {
+      btn.disabled = false;
+      btn.textContent = originalText;
+    });
   });
   ["name", "email", "country"].forEach(function (id, i) {
     document.getElementById(id).addEventListener("input", function () {
