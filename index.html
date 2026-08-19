@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Excavator — Construction Vehicles & Machinery Exporter | Drive to the World</title>
+<meta name="description" content="Excavator exports dump trucks, tractor trucks, semi-trailers and special vehicles to 40+ countries. One-stop sourcing, preparation, logistics and overseas localization.">
+<style>
+  :root{
+    --navy:#0e2a47; --navy-2:#123a63; --orange:#f07f13; --orange-2:#ff9a3d;
+    --ink:#1c2733; --muted:#5c6b7a; --bg:#f5f7fa; --card:#ffffff; --line:#e2e8f0;
+    --ok:#1d8a4e; --err:#d64545;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Segoe UI","Helvetica Neue",Arial,"PingFang SC",sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+  section{scroll-margin-top:76px}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:50;background:rgba(14,42,71,.96);backdrop-filter:blur(6px);color:#fff}
+  .nav{display:flex;align-items:center;gap:24px;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:.5px}
+  .logo .mark{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--orange),var(--orange-2));display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900}
+  .logo small{display:block;font-size:10px;font-weight:600;color:#bcd3ea;letter-spacing:2px}
+  nav{margin-left:auto;display:flex;gap:4px;align-items:center}
+  nav a{padding:8px 12px;border-radius:8px;font-size:14.5px;color:#dbe7f3}
+  nav a:hover{background:rgba(255,255,255,.1)}
+  nav a.active{color:#fff;background:rgba(240,127,19,.9)}
+  .btn{display:inline-block;background:linear-gradient(135deg,var(--orange),var(--orange-2));color:#fff;font-weight:700;padding:10px 22px;border-radius:999px;border:none;cursor:pointer;font-size:15px;transition:transform .15s, box-shadow .15s}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(240,127,19,.35)}
+  .btn.ghost{background:transparent;border:2px solid rgba(255,255,255,.6)}
+  .btn.dark{background:var(--navy)}
+  #navToggle{display:none;margin-left:auto;background:none;border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:8px;padding:6px 12px;font-size:18px;cursor:pointer}
+
+  /* HERO */
+  .hero{position:relative;color:#fff;background:var(--navy)}
+  .hero .bg{position:absolute;inset:0;overflow:hidden}
+  .hero .bg img{width:100%;height:100%;object-fit:cover;opacity:.42}
+  .hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(10,28,48,.95) 20%,rgba(10,28,48,.45) 70%,rgba(10,28,48,.75))}
+  .hero .inner{position:relative;padding:96px 20px 84px}
+  .eyebrow{display:inline-block;background:rgba(240,127,19,.16);border:1px solid rgba(240,127,19,.55);color:var(--orange-2);padding:5px 14px;border-radius:999px;font-size:12.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+  .hero h1{font-size:clamp(34px,5vw,56px);line-height:1.12;margin:18px 0 14px;font-weight:800}
+  .hero h1 em{font-style:normal;color:var(--orange-2)}
+  .hero p{max-width:640px;color:#cfdcea;font-size:16.5px}
+  .hero .cta{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap}
+  .stats{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.15);border-radius:16px;overflow:hidden;margin-top:52px}
+  .stats div{background:rgba(14,42,71,.72);padding:20px 16px;text-align:center}
+  .stats b{display:block;font-size:30px;color:var(--orange-2);font-weight:800}
+  .stats span{font-size:13px;color:#c3d4e6}
+
+  /* SECTION HEAD */
+  .shead{margin:0 0 34px}
+  .shead .tag{color:var(--orange);font-weight:800;letter-spacing:2px;font-size:12.5px;text-transform:uppercase}
+  .shead h2{font-size:clamp(26px,3.4vw,36px);color:var(--navy);margin-top:6px}
+  .shead p{color:var(--muted);max-width:680px;margin-top:8px}
+
+  /* ABOUT */
+  #about{padding:80px 0 64px;background:#fff}
+  .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+  .about-grid figure{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3;background:linear-gradient(135deg,#dfe8f2,#c6d4e4)}
+  .about-grid figure img{width:100%;height:100%;object-fit:cover}
+  .about-grid figure .badge{position:absolute;left:16px;bottom:16px;background:rgba(14,42,71,.9);color:#fff;border-radius:10px;padding:8px 14px;font-size:13px;font-weight:700}
+  .creds{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+  .cred{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .cred b{display:flex;align-items:center;gap:8px;color:var(--navy);font-size:15px}
+  .cred .ico{width:34px;height:34px;border-radius:9px;background:rgba(240,127,19,.14);color:var(--orange);display:flex;align-items:center;justify-content:center;font-size:16px;flex:none}
+  .cred p{font-size:13px;color:var(--muted);margin-top:6px}
+
+  /* PRODUCTS */
+  #products{padding:80px 0}
+  .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+  .tab{padding:9px 20px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--muted);font-weight:700;font-size:14px;cursor:pointer;transition:.15s}
+  .tab:hover{border-color:var(--orange);color:var(--orange)}
+  .tab.active{background:var(--navy);border-color:var(--navy);color:#fff}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .18s, box-shadow .18s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(14,42,71,.14)}
+  .card .ph{position:relative;aspect-ratio:16/10;background:linear-gradient(135deg,#e8eef5,#cfdbe8);overflow:hidden}
+  .card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+  .card:hover .ph img{transform:scale(1.05)}
+  .card .ph .cat{position:absolute;top:12px;left:12px;background:rgba(14,42,71,.85);color:#fff;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:999px;letter-spacing:.5px}
+  .card .ph .fb{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--navy);font-weight:800;font-size:15px;text-align:center;padding:0 14px}
+  .card .body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .card h3{font-size:17px;color:var(--navy);line-height:1.35}
+  .card ul{list-style:none;display:flex;flex-direction:column;gap:5px;margin-top:2px}
+  .card li{font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:flex-start}
+  .card li::before{content:"✓";color:var(--orange);font-weight:800;flex:none}
+  .card .inq{margin-top:auto;padding-top:12px}
+  .card .inq button{width:100%;padding:10px;border-radius:10px;border:1.5px solid var(--navy);background:#fff;color:var(--navy);font-weight:700;cursor:pointer;font-size:14px;transition:.15s}
+  .card .inq button:hover{background:var(--navy);color:#fff}
+  .empty{display:none;text-align:center;color:var(--muted);padding:60px 0;font-size:15px}
+
+  /* STRENGTHS */
+  #strengths{padding:80px 0;background:var(--navy);color:#fff}
+  #strengths .shead h2{color:#fff}
+  #strengths .shead p{color:#b9cadd}
+  .six{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .scard{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:22px}
+  .scard .num{font-size:13px;font-weight:800;color:var(--orange-2);letter-spacing:2px}
+  .scard h3{margin:8px 0 6px;font-size:17px}
+  .scard p{font-size:13.5px;color:#b9cadd}
+
+  /* COVERAGE */
+  #coverage{padding:80px 0;background:#fff}
+  .regions{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .region{border:1px solid var(--line);border-radius:14px;padding:18px;background:var(--bg)}
+  .region h4{color:var(--navy);font-size:15.5px;display:flex;align-items:center;gap:8px}
+  .region h4 i{width:9px;height:9px;border-radius:50%;background:var(--orange);flex:none}
+  .region p{font-size:12.5px;color:var(--muted);margin-top:8px}
+  .note{margin-top:26px;background:rgba(240,127,19,.08);border:1px dashed rgba(240,127,19,.5);border-radius:12px;padding:14px 18px;font-size:14px;color:#8a5416}
+
+  /* CONTACT */
+  #contact{padding:80px 0}
+  .c-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:36px}
+  .c-info{background:var(--navy);border-radius:18px;color:#fff;padding:32px}
+  .c-info h3{font-size:22px;margin-bottom:8px}
+  .c-info p{color:#b9cadd;font-size:14px;margin-bottom:22px}
+  .c-row{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid rgba(255,255,255,.12);font-size:14.5px}
+  .c-row .ico{width:36px;height:36px;flex:none;border-radius:10px;background:rgba(240,127,19,.2);display:flex;align-items:center;justify-content:center;font-size:16px}
+  .c-row b{display:block;font-size:12.5px;color:#9fb6cd;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+  form{background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px}
+  .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13.5px;font-weight:700;color:var(--navy);margin-bottom:6px}
+  .field input,.field select,.field textarea{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:11px 13px;font-size:14.5px;font-family:inherit;background:#fbfcfe;color:var(--ink)}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--orange);background:#fff}
+  .field .msg{display:none;color:var(--err);font-size:12.5px;margin-top:5px}
+  .field.err input,.field.err select{border-color:var(--err);background:#fff6f6}
+  .field.err .msg{display:block}
+  #formOk{display:none;background:rgba(29,138,78,.1);border:1px solid rgba(29,138,78,.45);color:var(--ok);border-radius:12px;padding:13px 16px;font-weight:700;font-size:14.5px;margin-bottom:18px}
+
+  footer{background:#0a1c30;color:#9fb6cd;padding:34px 0;font-size:13.5px}
+  footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
+  footer b{color:#fff}
+
+  @media (max-width:960px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .six{grid-template-columns:repeat(2,1fr)}
+    .regions{grid-template-columns:repeat(2,1fr)}
+    .about-grid,.c-grid{grid-template-columns:1fr}
+    .stats{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:640px){
+    nav{display:none;position:absolute;top:64px;left:0;right:0;background:var(--navy);flex-direction:column;align-items:stretch;padding:12px 16px 18px;gap:6px}
+    nav.open{display:flex}
+    #navToggle{display:block}
+    .nav .btn{display:none}
+    .grid{grid-template-columns:1fr}
+    .six{grid-template-columns:1fr}
+    .regions{grid-template-columns:1fr}
+    .frow{grid-template-columns:1fr}
+    .creds{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#home" aria-label="Excavator home">
+      <span class="mark">G</span>
+      <span>Excavator<small>DRIVE TO THE WORLD</small></span>
+    </a>
+    <button id="navToggle" aria-label="Open menu">☰</button>
+    <nav id="nav" aria-label="Main navigation">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#strengths">Why Us</a>
+      <a href="#coverage">Coverage</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn" href="#contact">Get a Quote</a>
+  </div>
+</header> 
+
+<section class="hero" id="home">
+  <div class="bg">
+    <img src="./assets/images/home-bg.jpg" alt="Excavator loading a heavy dump truck at a mining site" onerror="this.style.display='none'">
+  </div>
+  <div class="wrap inner">
+    <span class="eyebrow">Construction Vehicles &amp; Machinery Exporter</span>
+    <h1>Drive to the World.<br><em>Trucks Built for Tough Roads.</em></h1>
+    <p>Over a decade in construction vehicles and machinery, integrating production and sales. Dump trucks, tractor trucks, semi-trailers and special-purpose vehicles — sourced, prepared, shipped and supported, all in one stop.</p>
+    <div class="cta">
+      <a class="btn" href="#contact">Get a Quote</a>
+      <a class="btn ghost" href="#products">Browse Products</a>
+    </div>
+    <div class="stats">
+      <div><b>10+</b><span>Years in Industry</span></div>
+      <div><b>3,000+</b><span>Units Sold per Year</span></div>
+      <div><b>40+</b><span>Countries &amp; Regions</span></div>
+      <div><b>5</b><span>Major Product Lines</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="shead">
+      <span class="tag">Company Profile</span>
+      <h2>A One-Stop Export Partner You Can Verify</h2>
+    </div>
+    <div class="about-grid">
+      <figure>
+        <img src="./assets/images/home-bg.jpg" alt="Truck chassis on an automated assembly line in the factory" onerror="this.style.display='none'">
+        <span class="badge">Remanufacturing &amp; Preparation Plant</span>
+      </figure>
+      <div>
+        <p style="color:var(--muted);font-size:15.5px">We operate our own excavator remanufacturing plant and construction machinery industrial park, with testing qualifications and export licenses recognized by the Ministry of Commerce. From demand matching and equipment sourcing to preparation and export, every step is handled in-house.</p>
+        <div class="creds">
+          <div class="cred"><b><span class="ico">🏭</span>Own Remanufacturing Plant</b><p>Excavators inspected, refurbished and road-tested before export.</p></div>
+          <div class="cred"><b><span class="ico">📜</span>Licensed Exporter</b><p>Ministry-of-Commerce recognized export qualifications.</p></div>
+          <div class="cred"><b><span class="ico">🤝</span>10 Partner Brands</b><p>HOWO, SHACMAN, FAW, SITRAK and more on request.</p></div>
+          <div class="cred"><b><span class="ico">🔧</span>One-Stop Service</b><p>Sourcing, preparation, logistics, localization and compliance.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="products">
+  <div class="wrap">
+    <div class="shead">
+      <span class="tag">Best Selling</span>
+      <h2>Product Lines for Mining, Construction &amp; Logistics</h2>
+      <p>Every unit ships with reinforced chassis options, heavy-duty leaf springs and configurations tested for African and Southeast Asian road conditions.</p>
+    </div>
+    <div class="tabs" id="tabs" role="tablist" aria-label="Product categories"></div>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty">No products in this category yet.</div>
+  </div>
+</section>
+
+<section id="strengths">
+  <div class="wrap">
+    <div class="shead">
+      <span class="tag" style="color:var(--orange-2)">Core Strengths</span>
+      <h2>Six Capabilities, One Supply Chain</h2>
+    </div>
+    <div class="six">
+      <div class="scard"><span class="num">01</span><h3>Vehicle Sourcing</h3><p>Direct access to leading Chinese OEMs and certified used-vehicle pools at export-grade prices.</p></div>
+      <div class="scard"><span class="num">02</span><h3>Preparation</h3><p>Inspection, refurbishment, repainting and parts replacement in our own plant before loading.</p></div>
+      <div class="scard"><span class="num">03</span><h3>International Logistics</h3><p>RoRo, bulk and container shipping with export documentation and customs handled end to end.</p></div>
+      <div class="scard"><span class="num">04</span><h3>Overseas Localization</h3><p>Local agents, spare-parts supply and driver training in key African and Asian markets.</p></div>
+      <div class="scard"><span class="num">05</span><h3>Compliance &amp; Risk Control</h3><p>Export licensing, destination-country certification and payment-risk management covered.</p></div>
+      <div class="scard"><span class="num">06</span><h3>Digital Platform</h3><p>Online matching, transparent quotations and order tracking from inquiry to delivery.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="coverage">
+  <div class="wrap">
+    <div class="shead">
+      <span class="tag">Global Coverage</span>
+      <h2>Delivered to 40+ Countries &amp; Regions</h2>
+    </div>
+    <div class="regions">
+      <div class="region"><h4><i></i>Africa</h4><p>Nigeria, Ghana, Tanzania, DR Congo, Cameroon — mining and construction fleets.</p></div>
+      <div class="region"><h4><i></i>Southeast Asia</h4><p>Philippines, Malaysia, Vietnam, Myanmar — infrastructure and quarry projects.</p></div>
+      <div class="region"><h4><i></i>Middle East</h4><p>Saudi Arabia, UAE, Iraq — logistics and site transport solutions.</p></div>
+      <div class="region"><h4><i></i>South America &amp; CIS</h4><p>Peru, Bolivia, Kazakhstan — heavy haulage and bulk transport.</p></div>
+    </div>
+    <div class="note">💡 Tip for buyers: tell us your route, payload and budget — our team replies with a configuration sheet and FOB/CIF quotation within 24 hours.</div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="shead">
+      <span class="tag">Contact Us</span>
+      <h2>Get a Quotation in 24 Hours</h2>
+    </div>
+    <div class="c-grid">
+      <div class="c-info">
+        <h3>Let's Build Your Fleet</h3>
+        <p>Send your requirements and our export team will come back with models, specs and shipping options.</p>
+        <div class="c-row"><span class="ico">✉️</span><div><b>Email</b>sales@Excavator-example.com</div></div>
+        <div class="c-row"><span class="ico">📱</span><div><b>WhatsApp / WeChat</b>+86 138 0000 0000 (demo)</div></div>
+        <div class="c-row"><span class="ico">📍</span><div><b>Office</b>Truck Industrial Park, Jinan, Shandong, China</div></div>
+        <div class="c-row"><span class="ico">🕘</span><div><b>Working Hours</b>Mon–Sat, 9:00–18:00 (GMT+8)</div></div>
+      </div>
+      <form id="inqForm" novalidate>
+        <div id="formOk">✔ Thank you! Your inquiry has been recorded. Our team will contact you shortly. (Demo — not actually sent)</div>
+        <div class="frow">
+          <div class="field" id="fName">
+            <label for="name">Your Name *</label>
+            <input id="name" type="text" placeholder="e.g. John Obi" autocomplete="name">
+            <span class="msg">Please enter your name.</span>
+          </div>
+          <div class="field" id="fEmail">
+            <label for="email">Email *</label>
+            <input id="email" type="email" placeholder="you@company.com" autocomplete="email">
+            <span class="msg">Please enter a valid email address.</span>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="field" id="fCountry">
+            <label for="country">Country *</label>
+            <input id="country" type="text" placeholder="e.g. Nigeria">
+            <span class="msg">Please enter your country.</span>
+          </div>
+          <div class="field">
+            <label for="product">Product Interest</label>
+            <select id="product">
+              <option value="">Select a product line…</option>
+              <option>EX Series</option>
+              <option>MX Series</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" rows="4" placeholder="Payload, quantity, destination port, budget…"></textarea>
+        </div>
+        <button class="btn" type="submit" data-primary-action>Send Inquiry</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><b>Excavator</b> — Drive to the World. Construction vehicles &amp; machinery exporter.</div>
+    <div>© 2026 Excavator (demo site). All product data shown is illustrative.</div>
+  </div>
+</footer>
+
+<script>
+/* Demo product catalog for Excavator export site prototype */
+window.PRODUCTS = [
+
+  {
+    id: "ex12",
+    name: "EX12 Mini Excavator",
+    cat: "EX",
+    specs: ["1.2T operating weight", "Compact zero-tail swing", "Retractable tracks for narrow access"],
+    img: "./assets/images/EX12.png",
+    alt: "EX12 mini excavator side view"
+  },
+  {
+    id: "ex12-va",
+    name: "EX12-Va Mini Excavator",
+    cat: "EX",
+    specs: ["1.2T operating weight", "Variable-angle boom", "Extended reach for deep digging"],
+    img: "./assets/images/EX12-Va.png",
+    alt: "EX12-Va mini excavator with variable angle boom"
+  },
+  {
+    id: "ex18-pro",
+    name: "EX18 / EX18Pro Mini Excavator",
+    cat: "EX",
+    specs: ["1.8T operating weight", "Pro model with reinforced arm", "Yanmar engine option available"],
+    img: "./assets/images/EX18,EX18Pro.png",
+    alt: "EX18 and EX18Pro mini excavators comparison"
+  },
+  {
+    id: "mx20u",
+    name: "MX20U Ultra-Compact Excavator",
+    cat: "MX",
+    specs: ["2.0T operating weight", "Ultra-compact footprint", "Ideal for indoor demolition"],
+    img: "./assets/images/MX20U.png",
+    alt: "MX20U ultra-compact excavator working indoor"
+  },
+  {
+    id: "mx28u",
+    name: "MX28U Compact Excavator",
+    cat: "MX",
+    specs: ["2.8T operating weight", "Zero tail swing design", "Kubota engine, Euro 5 compliant"],
+    img: "./assets/images/MX28U.png",
+    alt: "MX28U compact excavator on construction site"
+  },
+  {
+    id: "mx38u",
+    name: "MX38U Midi Excavator",
+    cat: "MX",
+    specs: ["3.8T operating weight", "Midi-class digging power", "Cabin with A/C for all climates"],
+    img: "./assets/images/MX38U.png",
+    alt: "MX38U midi excavator with cabin"
+  }
+];
+
+window.CATS = [
+  { key: "all", label: "All" },
+ 
+  { key: "EX", label: "EX Series" },
+  { key: "MX", label: "MX Series" }
+];
+
+</script>
+<script>
+(function () {
+  "use strict";
+  /* ---------- Mobile nav ---------- */
+  var nav = document.getElementById("nav");
+  document.getElementById("navToggle").addEventListener("click", function () {
+    nav.classList.toggle("open");
+  });
+  nav.addEventListener("click", function (e) {
+    if (e.target.tagName === "A") nav.classList.remove("open");
+  });
+
+  /* ---------- Active nav highlight (REQ-001) ---------- */
+  var links = Array.prototype.slice.call(nav.querySelectorAll("a"));
+  var sections = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+  function onScroll() {
+    var y = window.scrollY + 120;
+    var idx = 0;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i] && sections[i].offsetTop <= y) idx = i;
+    }
+    links.forEach(function (a, i) { a.classList.toggle("active", i === idx); });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- Product render + filter (REQ-002) ---------- */
+  var tabsBox = document.getElementById("tabs");
+  var grid = document.getElementById("grid");
+  var empty = document.getElementById("empty");
+  var catLabel = {};
+  (window.CATS || []).forEach(function (c) {
+    catLabel[c.key] = c.label;
+    var b = document.createElement("button");
+    b.className = "tab" + (c.key === "all" ? " active" : "");
+    b.type = "button";
+    b.setAttribute("role", "tab");
+    b.textContent = c.label;
+    b.dataset.cat = c.key;
+    b.addEventListener("click", function () {
+      tabsBox.querySelectorAll(".tab").forEach(function (t) { t.classList.remove("active"); });
+      b.classList.add("active");
+      render(c.key);
+    });
+    tabsBox.appendChild(b);
+  });
+
+  function card(p) {
+    var el = document.createElement("article");
+    el.className = "card";
+    var label = (p.name || "").replace(/[<>&"]/g, "");
+    el.innerHTML =
+      '<div class="ph">' +
+        '<div class="fb">' + label + "</div>" +
+        '<img loading="lazy" alt="' + (p.alt || label) + '" data-image="' + p.img + '" onerror="this.style.display=\'none\'">' +
+        '<span class="cat">' + (catLabel[p.cat] || "Vehicle") + "</span>" +
+      "</div>" +
+      '<div class="body"><h3>' + label + "</h3><ul>" +
+      p.specs.map(function (s) { return "<li>" + s + "</li>"; }).join("") +
+      '</ul><div class="inq"><button type="button" data-inq="' + label + '">Inquire Now</button></div></div>';
+    var imgEl = el.querySelector("img");
+    if (imgEl && imgEl.getAttribute("data-image")) imgEl.src = imgEl.getAttribute("data-image");
+    return el;
+  }
+
+  function render(cat) {
+    var list = (window.PRODUCTS || []).filter(function (p) { return cat === "all" || p.cat === cat; });
+    grid.innerHTML = "";
+    list.forEach(function (p) { grid.appendChild(card(p)); });
+    empty.style.display = list.length ? "none" : "block";
+  }
+  render("all");
+
+  /* Inquire buttons scroll to form and preselect product line */
+  grid.addEventListener("click", function (e) {
+    var btn = e.target.closest("button[data-inq]");
+    if (!btn) return;
+    var map = { "EX": "EX Series", "MX": "MX Series" };
+    var name = btn.dataset.inq, sel = document.getElementById("product");
+    for (var k in map) { if (name.indexOf(k) !== -1) { sel.value = map[k]; break; } }
+    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+    setTimeout(function () { document.getElementById("name").focus({ preventScroll: true }); }, 600);
+  });
+
+  /* ---------- Inquiry form (REQ-003) ---------- */
+  var form = document.getElementById("inqForm");
+  var okBox = document.getElementById("formOk");
+  function setErr(id, bad) { document.getElementById(id).classList.toggle("err", bad); return bad; }
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var bad = false;
+    bad = setErr("fName", !document.getElementById("name").value.trim()) || bad;
+    var email = document.getElementById("email").value.trim();
+    bad = setErr("fEmail", !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) || bad;
+    bad = setErr("fCountry", !document.getElementById("country").value.trim()) || bad;
+    if (bad) { okBox.style.display = "none"; return; }
+    okBox.style.display = "block";
+    form.reset();
+    okBox.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+  ["name", "email", "country"].forEach(function (id, i) {
+    document.getElementById(id).addEventListener("input", function () {
+      setErr(["fName", "fEmail", "fCountry"][i], false);
+    });
+  });
+})();
+</script>
+</body>
+</html>
